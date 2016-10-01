@@ -1,0 +1,285 @@
+﻿/* Import fonts */
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic);
+
+body {
+    color: #797979;
+    font-family: 'Open Sans', sans-serif;
+    font-size:13px;
+    height: 100%;
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, label {
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 1.4em;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.navbar-inverse {
+    background: #FFF;
+}
+
+.navbar-inverse .navbar-brand, .navbar-inverse .navbar-brand:hover {
+    color: #000;
+    font-weight: 400;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #333;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover {
+    color: #777;
+}
+
+.navbar-inverse .navbar-text {
+    color: #333;
+}
+
+.table-medium {
+    font-size: 1.2em;
+    color: #000;
+}
+
+.modal-content {
+    border-radius: 0;
+}
+
+.modal-dialog {
+    margin-top: 200px;
+    border: 1px solid #000;
+}
+
+.modal-header {
+    background: inherit;
+    color: #000;
+    border-bottom: 1px solid #000;
+}
+
+.modal-footer {
+    padding: 10px;
+    border-top-color: #000;
+}
+.btn-white {
+    border-color: #333;
+    color: #333;
+}
+
+.vs {
+    font-size: 1.4em;
+    text-align: center;
+}
+
+.player-input {
+
+}
+
+.modal-add {
+    padding: 15px 0;
+    border-top: dashed 2px #BBB;
+    text-align: center;
+    background: #EFEFEF;
+}
+
+.centered tbody > tr > td, .centered thead > tr > td, .centered tfoot > tr > td {
+    text-align: center;
+}
+
+.table-medium > tbody > tr > td {
+    text-align: center;
+}
+
+.left-align {
+    text-align: left !important;
+}
+
+svg {
+  margin: auto;
+}
+
+.navbar-toggle {
+    background-color: #000;
+}
+
+.line-graph {
+    width: 100%;
+}
+
+.loading-center {
+    width: 100%;
+    text-align: center;
+}
+
+.loading-center > i {
+    margin: 1.2em auto;
+}
+
+.boxed {
+    padding: 0 1.2em;
+}
+
+.positive {
+    background-color: aquamarine;
+}
+
+.negative {
+    background-color: #FCA39D;
+}
+
+.table-medium > thead {
+    border-bottom: 2px solid #666;
+}
+
+.btn-danger {
+    background: #FCA39D;
+    color: #000;
+}
+
+.btn-success, .btn-success:visited {
+    background: #7fffd4;
+    color: #000;
+    border: none;
+    border-radius: 4px;
+}
+
+.btn-success:hover {
+    background: #5b927f;
+}
+
+.btn-nav {
+    margin: -10px 4px;
+}
+
+.check-available {
+    color: #48bf97;
+}
+
+.check-unavailable {
+    color: #CCC;
+}
+
+.stats-breakdown {
+    text-align: left;
+}
+
+.stats-breakdown > h5 {
+    margin-left: 28px;
+}
+
+.vs-ddl .chosen-container{
+    margin-top: -4px;
+    width: 100%;
+}
+
+.breakdown-table > table {
+    font-size: 14px;
+}
+
+.breakdown-body {
+    text-align: center;
+}
+
+.chosen-container {
+    background: none;
+}
+
+.chosen-container-single .chosen-single, .chosen-container-active.chosen-with-drop .chosen-single {
+    border-radius: 2px;
+    background: none !important;
+    background-image: none !important;
+}
+
+.chosen-container .chosen-results li.highlighted {
+    background: #E37474;
+}
+
+#sheet {
+    margin-top: 2em;
+}
+
+label {
+    margin-bottom: 0;
+    padding: 10px;
+    text-transform: uppercase;
+}
+
+.stats {
+    margin-top: 2em;
+}
+
+.status > div > div {
+    margin-bottom: 10px;
+}
+
+.status > div > div:first-child {
+    background: #E37474;
+    color: #FFF;
+    font-size: 1.2em;
+}
+
+.status h3 {
+    font-size: 32px;
+    font-weight: 100;
+}
+
+.status > div > div > div > .thresh {
+    background: #E37474;
+    color: #FFF;
+}
+
+.status > div > div > div > .current {
+    background: #57B1BD;
+    color: #FFF;
+}
+
+.thresh > label, .current > label {
+    font-size: 12px;
+}
+
+.characteristics > h2 {
+    margin-left: 26px;
+    font-weight: 100;
+    font-size: 20px;
+}
+
+.thresh {
+    background: #FAE8EA
+}
+
+.current {
+    background: #E3FFEE;
+}
+
+.btn-default {
+    background-color: #FFF;
+    border-color: #bec3c7;
+    color: #333;
+}
+
+.form-group {
+    min-height: 30px;
+}
+
+.session {
+    margin-bottom: 2em;
+}

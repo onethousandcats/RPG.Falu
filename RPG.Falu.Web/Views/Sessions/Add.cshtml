@@ -1,0 +1,47 @@
+﻿@using RPG.Falu.Web.Models;
+@model Session
+
+@{
+    ViewBag.Title = "New Session";
+}
+
+@using (Html.BeginForm("Add", "Sessions", FormMethod.Post, new { @id = "add" }))
+{
+    @Html.HiddenFor(o => o.Notes, new { @id = "notes" })
+
+    <div class="form-group">
+        @Html.TextBoxFor(o => o.Date, new { @class = "form-control datepicker", @id = "date", @placeholder = "Select date of event"})
+    </div>
+
+    <div class="form-group">
+        <div id="sn"></div>
+    </div>
+
+    <div class="form-group">
+        <div class="pull-right">
+            <input type="submit" value="Save Session" class="btn btn-white" />
+        </div>
+
+    </div>
+}
+
+@section scripts {
+    <script>
+        var sn = $('#sn').summernote({
+            height: 300,
+            maxHeight: 600,
+            focus: true
+        });
+
+        $('#date').datepicker({
+            format: 'mm/dd/yyyy'
+        });
+
+        $('#add').submit(function () {
+            $('#notes').val(sn.code());
+        });
+    </script>
+}
+
+
+

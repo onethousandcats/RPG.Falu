@@ -1,0 +1,26 @@
+﻿@using RPG.Falu.Web.Models;
+@model IEnumerable<Session>
+
+@{
+    ViewBag.Title = "Sessions";
+}
+
+@section Navigation {
+    <li><a href="/Sessions/Add" class=""><i class="fa fa-plus"></i> Add Session</a></li>    
+}
+
+@foreach (var session in Model)
+{
+    <div class="session">
+        <h4>@session.Date.ToShortDateString() <a href="/Sessions/Edit/@session.SessionId" class="edit btn btn-xs btn-white"><i class="fa fa-edit"></i> Edit</a></h4>
+        <p>@Html.Raw(session.Notes)</p>
+    </div>
+    <hr />
+}
+
+@section scripts {
+    <script>
+
+    </script>    
+}
+

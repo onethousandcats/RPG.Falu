@@ -1,0 +1,16 @@
+﻿@using RPG.Falu.Web.Models;
+@model HomeViewModel
+
+@{
+    ViewBag.Title = "Home";
+}
+
+@if (Model.LastSession != null)
+{
+    <div class="latest-session">
+        <h4>Latest Session (@Model.LastSession.Date.ToShortDateString())</h4>
+        <div class="notes">
+            @Html.Raw(Model.LastSession.Notes)
+        </div>
+    </div>
+}

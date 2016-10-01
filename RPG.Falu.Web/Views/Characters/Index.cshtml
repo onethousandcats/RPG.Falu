@@ -1,0 +1,34 @@
+﻿@using RPG.Falu.Web.Models;
+@{
+    ViewBag.Title = "Characters";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        @Html.DropDownList("character", (IEnumerable<SelectListItem>)Rpg.Instance.CharactersDdl, "", new { @class = "form-control", @id = "character", @data_placeholder = "Select Character" })
+    </div>
+</div>
+
+<div id="sheet">
+
+</div>
+
+@section scripts {
+    <script>
+        $('#character').chosen({
+            no_results_text: "These aren't the droids you're looking for."
+        });
+
+        $('#character').change(function () {
+            var id = $(this).val();
+
+            $.ajax({
+                url: '/Characters/Sheet/' + id,
+                type: 'GET',
+                success: function (result) {
+                    $('#sheet').html(result);
+                }
+            });
+        })
+    </script>
+}

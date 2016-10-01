@@ -1,0 +1,223 @@
+﻿@using RPG.Falu.Web.Models;
+@model CharacterViewModel
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="row">
+            <label for="name" class="col-lg-4 col-sm-4 control-label">Character</label>
+            <div class="col-lg-8"><h5>@Model.Character</h5></div>
+        </div>
+        <div class="row">
+            <label for="species" class="col-lg-4 col-sm-4 control-label">Species</label>
+            <div class="col-lg-8"><h5>@Model.Species.Formatted()</h5></div>
+        </div>
+        <div class="row">
+            <label for="career" class="col-lg-4 col-sm-4 control-label">Career</label>
+            <div class="col-lg-8"><h5>@Model.Career.Formatted()</h5></div>
+        </div>
+        <div class="row">
+            <label for="specialization" class="col-lg-4 col-sm-4 control-label">Specialization Trees</label>
+            <div class="col-lg-8"><h5>@Model.Specialization.Formatted()</h5></div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="row">
+            <label for="player" class="col-lg-4 col-sm-4 control-label">Player</label>
+            <div class="col-lg-8"><h5>@Model.Player.Name</h5></div>
+        </div>
+        <div class="row">
+            <label for="player" class="col-lg-4 col-sm-4 control-label">Email</label>
+            <div class="col-lg-8"><h5><a href="mailto:@Model.Player.Email">@Model.Player.Email</a></h5></div>
+        </div>
+    </div>
+</div>
+
+<div class="row stats">
+    <div class="table-responsive">
+        <table class="table table-hover centered">
+            <thead>
+                <tr>
+                    <td>Soak Value</td>
+                    <td colspan="2">Wounds</td>
+                    <td colspan="2">Strain</td>
+                    <td colspan="2">Defense</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@Model.Status.Soak</td>
+                    <td>@Model.Status.WoundsThresh</td>
+                    <td>@Model.Status.WoundsCurrent</td>
+                    <td>@Model.Status.StrainThresh</td>
+                    <td>@Model.Status.StrainCurrent</td>
+                    <td>@Model.Status.DefenseRanged</td>
+                    <td>@Model.Status.DefenseMelee</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td></td>
+                    <td class="thresh">Threshold</td>
+                    <td class="current">Current</td>
+                    <td class="thresh">Threshold</td>
+                    <td class="current">Current</td>
+                    <td class="thresh">Ranged</td>
+                    <td class="current">Melee</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+<div class="row characteristics">
+    <h2>Characteristics</h2>
+    <div class="table-responsive">
+        <table class="table table-hover centered">
+            <thead>
+                <tr>
+                    <td>Brawn</td>
+                    <td>Agility</td>
+                    <td>Intellect</td>
+                    <td>Cunning</td>
+                    <td>Willpower</td>
+                    <td>Presence</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@Model.Characteristics.SingleOrDefault(o => o.Type == CharacteristicTypes.Brawn).Value</td>
+                    <td>@Model.Characteristics.SingleOrDefault(o => o.Type == CharacteristicTypes.Agility).Value</td>
+                    <td>@Model.Characteristics.SingleOrDefault(o => o.Type == CharacteristicTypes.Intellect).Value</td>
+                    <td>@Model.Characteristics.SingleOrDefault(o => o.Type == CharacteristicTypes.Cunning).Value</td>
+                    <td>@Model.Characteristics.SingleOrDefault(o => o.Type == CharacteristicTypes.Willpower).Value</td>
+                    <td>@Model.Characteristics.SingleOrDefault(o => o.Type == CharacteristicTypes.Presence).Value</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="row characteristics">
+    <h2>Skills</h2>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <td>General Skills</td>
+                            <td>Career?</td>
+                            <td></td>
+                            <td>Rank</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var skill in Model.Skills.Where(o => o.Class == SkillClassTypes.General).OrderBy(x => x.Type))
+                        {
+                            <tr>
+                                <td>@skill.Type.Formatted() (@skill.Characteristic.Type.Formatted())</td>
+                                <td>@Html.Raw(skill.Career ? "<i class='fa fa-circle'></i>" : "")</td>
+                                <td></td>
+                                <td>@skill.Rank</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <td>Combat Skills</td>
+                            <td>Career?</td>
+                            <td></td>
+                            <td>Rank</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var skill in Model.Skills.Where(o => o.Class == SkillClassTypes.Combat).OrderBy(x => x.Type))
+                        {
+                            <tr>
+                                <td>@skill.Type.Formatted() (@skill.Characteristic.Type.Formatted())</td>
+                                <td>@Html.Raw(skill.Career ? "<i class='fa fa-circle'></i>" : "")</td>
+                                <td></td>
+                                <td>@skill.Rank</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <td>Knowledge Skills</td>
+                            <td>Career?</td>
+                            <td></td>
+                            <td>Rank</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var skill in Model.Skills.Where(o => o.Class == SkillClassTypes.Knowledge).OrderBy(x => x.Type))
+                        {
+                            <tr>
+                                <td>@skill.Type.Formatted() (@skill.Characteristic.Type.Formatted())</td>
+                                <td>@Html.Raw(skill.Career ? "<i class='fa fa-circle'></i>" : "")</td>
+                                <td></td>
+                                <td>@skill.Rank</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row characteristics">
+    <h2>Duty</h2>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <td>Type</td>
+                    <td>Magnitude</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@Model.Duty.Type.Formatted()</td>
+                    <td>@Model.Duty.Magnitude</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="row characteristics">
+    <h2>Character Description</h2>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <td>Gender</td>
+                    <td>Age</td>
+                    <td>Height</td>
+                    <td>Build</td>
+                    <td>Hair</td>
+                    <td>Eyes</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@Model.Gender</td>
+                    <td>@Model.Age</td>
+                    <td>@Model.Height</td>
+                    <td>@Model.Build</td>
+                    <td>@Model.Hair</td>
+                    <td>@Model.Eyes</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
