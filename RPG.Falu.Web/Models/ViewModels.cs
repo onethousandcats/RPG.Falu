@@ -88,7 +88,7 @@ namespace RPG.Falu.Web.Models
         {
             using (var context = new RpgModel())
             {
-                LastSession = context.Sessions.OrderBy(o => o.Date).FirstOrDefault();
+                LastSession = context.Sessions.OrderByDescending(o => o.Date).FirstOrDefault();
             }
         }
     }

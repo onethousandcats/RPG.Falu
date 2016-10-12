@@ -283,3 +283,8 @@ label {
 .session {
     margin-bottom: 2em;
 }
+
+.iv {
+    color: #F06060;
+    font-weight: bold;
+}

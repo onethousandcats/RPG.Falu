@@ -10,9 +10,10 @@ namespace RPG.Falu.Web.Controllers
     public class SessionsController : Controller
     {
         private RpgModel _rpg = new RpgModel();
+
         public ActionResult Index()
         {
-            return View(_rpg.Sessions);
+            return View(_rpg.Sessions.OrderByDescending(x => x.Date));
         }
 
         public ActionResult Add()
